@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+    <title>Document</title>
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+
+</head>
+
+<body>
+    <!--   规范：只有main页面使用div以外的容器-->
+    <!--   main页使用main前缀 每个子页使用对应前缀-->
+    <!--    main页的js可以写在公共空间 子页全部写在function内-->
+    <!--    预定义类 hover active-->
+    <!--    由于统一分割需要 main页可以引入字体 确定公用css类-->
+    <!--    main页可以引入公用库文件 并且所有库文件都在main页引入-->
+    <header>
+        <!--    外容器-->
+        <div class="panel" id="main-navback"></div>
+        <div id="main-hcont">
+            <!--       内容器-->
+            <div id="mainlogo">
+                <!--                logo容器-->
+            </div>
+            <ul id="mainnav" class="panel">
+                <!--                导航栏容器-->
+                <li data-pageid="index">主页</li>
+                <li data-pageid="menu">目录</li>
+                <li data-pageid="timeline">时间线</li>
+                <li data-pageid="about">关于</li>
+                <li>更多</li>
+                <!--这个更多不确定要不要-->
+            </ul>
+            <div class="canactive" id="mainbtn" data-active="#mainnav">
+                <!--                导航栏按钮容器-->
+                hello
+            </div>
+        </div>
+    </header>
+    <div id="maincontent">
+        <!--        主体页面区域-->
+        <!--        ajax加载-->
+    </div>
+    <aside id="mainside">
+        <!--        侧边栏区域-->
+        <!--        侧边栏为简单信息展示 例如文章作者 目录等附加信息-->
+        <div id="main-sidecont">
+            <!--        侧边栏容器 侧边栏aside提供一个定位容器此为内容容器-->
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
+
+            spernatur atque cumque debitis doloribus eius error et eveniet explicabo hic
+            laborum libero maiores minima natus nemo neque nihil nisi numquam odit officia per
+            ferendis possimus quis, quisquam repellendus reprehenderit repudiandae rerum sapiente
+            sunt suscipit velit veniam! Accusamus eos facere, illum minus perferendis quas vel vitae.
+            Culpa ducimus exercitationem fugit inventore iusto magnam, molestias optio, porro, quo sed v
+            itae voluptatibus? Accusamus eius expedita fugit illum, nisi nobis reprehenderit voluptatibus! C
+            orporis illo, ullam. Accusamus aperiam asperiores corporis, deserunt doloribus e
+            ligendi facilis harum hic itaque iusto laborum minima mollitia nobis officia rem sit voluptatem. Fuga.
+        </div>
+    </aside>
+    <footer>
+        <!--    页脚区域-->
+    </footer>
+    <!--    挂件区域-->
+    <div id="main-widgets">
+        <!--        单纯容器 挂件都是fixed-->
+        <div id="mainsbtn" class="canactive" data-active="#mainside">
+            H
+        </div>
+    </div>
+</body>
+
+</html>

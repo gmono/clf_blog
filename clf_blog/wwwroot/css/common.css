@@ -1,0 +1,16 @@
+.panel {
+    position: relative;
+    box-shadow: #cccccc 0px 0px 8px 2px;
+    overflow: hidden;
+}
+
+.panel:after {
+    content: "";
+    width: 120%;
+    height: 120%;
+    position: absolute;
+    left: -10%;
+    top: -10%;
+    filter: blur(5px);
+    z-index: -1;
+}
