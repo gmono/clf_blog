@@ -5,16 +5,18 @@
 }
 
 body {
-    background-image: url(../images/back1.jpg);
+    /*background-image: url(../images/back1.jpg);*/
+    background-color: white;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
 }
 
 header {
-    height: 75px;
+    height: 50px;
     position: relative;
     z-index: 999;
+    animation: fadeInDown 0.5s linear;
 }
 
 #main-navback {
@@ -25,7 +27,7 @@ header {
 }
 #main-navback:after
 {
-    background-color: rgba(205, 205, 205, 0.57);
+    background-color: rgb(214, 214, 214);
 }
 #main-hcont {
     /*内容器*/
@@ -46,7 +48,7 @@ header>div>* {
     left: 0;
     top: 0;
     width: 100px;
-    height: 75px;
+    height: 50px;
     background-color: antiquewhite;
 }
 
@@ -64,7 +66,7 @@ header>div>* {
 
 #mainnav>li {
     width: 5em;
-    height: 75px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,7 +88,7 @@ header>div>* {
     top: 0;
     justify-content: center;
     align-items: center;
-    height: 75px;
+    height: 50px;
     padding: 0 12px;
     box-sizing: border-box;
     /*    position: absolute;*/
@@ -107,11 +109,12 @@ header>div>* {
 #mainsbtn {
     position: fixed;
     right: 20px;
-    bottom: 30px;
+    bottom: 60px;
     background-color: #cccccc;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
+    border-radius: 50%;
 }
 
 
@@ -126,22 +129,46 @@ header>div>* {
     width: 400px;
     box-sizing: border-box;
     padding-top: 75px;
-    animation: rotateInDownRight 0.5s ease;
+    animation: fadeInRight 0.5s ease;
+    overflow: hidden;
+    padding-bottom: 75px;
 }
 
 #mainside.active {
     display: block;
 }
 #main-sidecont{
-    background-color: aquamarine;
+
     height: 100%;
     width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 10px;
+}
+#main-sidecont:after
+{
+    z-index: -1;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: rgba(213, 139, 143, 0.87);
+    filter:blur(5px);
+    top:0;
+    left:0;
+    position: absolute;
 }
 /*页脚区域*/
 footer
 {
     height: 50px;
     background-color: #cccccc;
+}
+#maincontent{
+    min-height: 95vh;
+    background-color:white;
+}
+#mainspace{
+    height: 30px;
 }
 /*768为窄屏*/
 
@@ -168,31 +195,43 @@ footer
     #mainnav {
         display: none;
         width: 100%;
-        margin-top: 90px;
-        background-color: antiquewhite;
+        margin-top: 60px;
+        /*background-color: antiquewhite;*/
         overflow: visible;
         animation: fadeInDown 0.5s ease;
+
     }
-    #mainnav:before {
+    #mainnav:after{
         content: "";
+        background-color: rgba(255, 243, 223, 0.93);
         position: absolute;
-        right: 10px;
-        top: 0;
-        width: 0;
-        height: 0;
-        border-bottom: blanchedalmond 15px;
-        border-left: transparent 20px;
-        border-right: transparent 20px;
-        border-style: solid;
-        margin-top: -15px;
+        top:0;
+        left:0;
+        filter:blur(5px);
+        height: 100%;
+        width: 100%;
+        z-index: -1;
     }
+    /*#mainnav:before {*/
+        /*content: "";*/
+        /*position: absolute;*/
+        /*right: 10px;*/
+        /*top: 0;*/
+        /*width: 0;*/
+        /*height: 0;*/
+        /*border-bottom: blanchedalmond 15px;*/
+        /*border-left: transparent 20px;*/
+        /*border-right: transparent 20px;*/
+        /*border-style: solid;*/
+        /*margin-top: -15px;*/
+    /*}*/
     #mainnav>li {
         width: 100%;
         height: 12vh;
     }
     #mainnav>li:hover{
         border:none;
-        background-color: burlywood;
+        background-color: rgba(222, 184, 135, 0.95);
     }
     #mainlogo {
         margin-left: 0;
@@ -203,4 +242,9 @@ footer
     #mainside{
         width: 100%;
     }
+    #mainsbtn{
+        height: 50px;
+        width: 50px;
+    }
 }
+

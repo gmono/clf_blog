@@ -1,0 +1,58 @@
+.blitem {
+    background-color: white;
+    padding: 10px;
+    margin-left: 70px;
+    width: 80%;
+    padding-bottom: 20px;
+    /*border-bottom: solid black 1px;*/
+    box-shadow: #dbdbdb 1px 1px 12px 2px;
+    box-sizing: border-box;
+    animation: fadeInUp 1s cubic-bezier(1, -0.09, .07, .64);
+    margin-bottom: 10px;
+}
+
+.bltitle {
+    color: #222222;
+    font-size: x-large;
+    cursor: pointer;
+}
+.bltitle:hover
+{
+    color: #3a5e80;
+}
+
+.bltime {
+    color: #7e7e7e;
+    font-style: italic;
+    font-weight: bold;
+    font-size: smaller;
+    margin: 10px 0 10px 15px;
+}
+
+.blcontent {
+    color: #595959;
+    min-height: 100px;
+    cursor: default;
+}
+.blcontent:hover{
+    color: black;
+}
+.blfooter {
+    text-align: right;
+}
+
+@media screen and (max-width:768px) {
+    .blitem {
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:512px) {
+    .blitem {
+        margin-left: auto;
+        margin-right: auto;
+        width: 95%;
+    }
+}
