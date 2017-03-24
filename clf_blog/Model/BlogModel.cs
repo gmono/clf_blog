@@ -15,8 +15,9 @@ namespace coretest.Model
             public string Content;
             public DateTime Time;
             public long Type;
-            public IEnumerable<byte> Data;
-            public long DataLength;
+            public Stream Data;
+            public long AuthorId;
+            public string ArticleInfo;
         }
         static string source = null;
         public BlogModel()
@@ -45,25 +46,12 @@ namespace coretest.Model
                 bg.Id = reader.GetInt64(0);
                 bg.Title = reader.GetString(1);
                 bg.Content = reader.GetString(2);
-
-                string time = reader.GetString(3);
-                string[] tms = time.Split('-');
-                DateTime dt = new DateTime(int.Parse(tms[0]), int.Parse(tms[1]), int.Parse(tms[2]));
-                bg.Time = dt;
-                bg.Type = reader.GetInt64(4);
+                bg.Type = reader.GetInt64(3);
+                bg.Time = reader.GetDateTime(4);
+                bg.Data=reader.GetStream(5);
+                bg.AuthorId = reader.GetInt64(6);
+                bg.ArticleInfo = reader.GetString(7);
                 //bg.Data = reader.GetBlob(4,false);
-                if(isdata)
-                {
-                    byte[] buf = new byte[4*1024 * 1024];//最大允许4M的用户自定义数据 多的放文件
-                    long size=reader.GetBytes(5, 0, buf, 0, 4 * 1024 * 1024);
-                    bg.DataLength = size;
-                    bg.Data = buf.Take((int)size);
-                }
-                else
-                {
-                    bg.Data = null;
-                    bg.DataLength = 0;
-                }
                 return bg;
             }
             return null;
