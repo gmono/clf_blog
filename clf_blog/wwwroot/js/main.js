@@ -15,6 +15,11 @@ $(function () {
             eles.addClass("active");
         }
     });
+    $(".menuitem").click(function () {
+        var pagename=$(this).attr("data-pageid");
+        Debug.LoadPage(pagename);
+    });
+    Debug.LoadPage("Index");
 
 });
 //这里声明公用函数 使用System命名空间
@@ -36,3 +41,7 @@ System.ShowArticle=function(id)
     System.LoadPage('Article',{Id:id});
     System.LoadSide('Article',{Id:id});
 }
+var Debug={};
+Debug.LoadPage=function (name) {
+    $("#maincontent").load(name+".html");
+};
