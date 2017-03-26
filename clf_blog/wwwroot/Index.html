@@ -1,28 +1,134 @@
+
+<link rel="stylesheet" href="css/index.css">
 <div class="i-top">
     <!--   全屏滚动式-->
-
     <div class="i-sidebar">
+        <div class="i-sidecont">
+            <div class="i-sidebtn">
+                <div class="i-sbtntext" data-trans=".i-hot">热门文章</div>
+            </div>
+            <div class="i-sidebtn">
+                <div class="i-sbtntext" data-trans=".i-new">
+                    最新文章
+                </div>
+            </div>
+            <div class="i-sidebtn">
+                <div class="i-sbtntext" data-trans=".i-msg">
+                    通知
+                </div>
+            </div>
+        </div>
 
+        <div class="i-sideline">
+
+        </div>
     </div>
-    <input type="radio" name="selector" value="介绍">
-    <input type="radio" name="selector" value="通知">
-    <input type="radio" name="selector" value="最新">
-    <input type="radio" name="selector" value="热门">
+
     <div class="i-pagecont">
         <div class="i-hot">
             <!--最热-->
             <!--        卡片测试-->
+            <h3>最热文章：</h3>
+            <div class="i-wenzhang-cont">
+                <div>
+                    <div class="i-wenzhang">
+                        <div>Title</div>
+                        <hr>
+                        <div>Content</div>
+                        <hr>
+                        <div>Footer</div>
+                    </div>
+                    <div class="i-wenzhang"></div>
+                </div>
+                <div>
+                    <div class="i-wenzhang"></div>
+                    <div class="i-wenzhang"></div>
+                </div>
+                <div>
+                    <div class="i-wenzhang"></div>
+                </div>
+            </div>
         </div>
         <div class="i-new">
             <!--    最新博客-->
+            <h3>最新文章：</h3>
+            <div class="i-wenzhang-cont">
+                <div>
+                    <div class="i-wenzhang">
+                        <div>Title</div>
+                        <hr>
+                        <div>Time</div>
+                        <hr>
+                        <div>Content</div>
+                        <hr>
+                        <div>点击进入-></div>
+                    </div>
+                    <div class="i-wenzhang"></div>
+                </div>
+                <div>
+                    <div class="i-wenzhang"></div>
+                    <div class="i-wenzhang"></div>
+                </div>
+                <div>
+                    <div class="i-wenzhang"></div>
+                </div>
+            </div>
         </div>
         <div class="i-msg">
             <!--    通知区域-->
-        </div>
-        <div class="i-info">
-            <!--        信息展示-->
+            <h3>最近通知：</h3>
+            <details>
+                <summary>hello</summary>
+                <h2>test</h2>
+            </details>
+            <details>
+                <summary>演示通知</summary>
+                <h2>Lorem ipsum dolor sit amet, consectetur adipisicing e
+                    lit. Doloremque earum enim id impedit iusto neq
+                    ue perspiciatis quos reiciendis sed ullam?</h2>
+            </details>
+            <details>
+                <summary>hello</summary>
+                <h2>test</h2>
+            </details>
         </div>
     </div>
 
 
 </div>
+<script>
+    HTMLCollection.prototype.forEach=Array.prototype.forEach;
+$(".i-sbtntext").click(function () {
+    $(".i-sbtntext").removeClass("active");
+    $(this).addClass("active");
+    var val=$(this).attr("data-trans");
+    $(".i-pagecont")[0].children.forEach(function (ele) {
+        $(ele).hide();
+    });
+    $(val).show();
+});
+$(".i-wenzhang").click(function () {
+    if($(this).hasClass("active"))
+    {
+        $(this).removeClass("active");
+    }
+    else
+    {
+        $(".i-wenzhang").removeClass("active");
+        $(this).addClass(("active"));
+    }
+
+})
+    $(window).resize(function (e) {
+        var wth=window.innerWidth;
+        if(wth<512)
+        {
+            $(".i-pagecont")[0].children.forEach(function (ele) {
+                $(ele).show();
+            });
+        }
+    })
+    $(".i-wenzhang>div:last-child").click(function () {
+        alert("hello");
+    })
+</script>
