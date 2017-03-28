@@ -1,0 +1,61 @@
+
+
+<link rel="stylesheet" href="css/types.css">
+<div class="t-top">
+    <!--   全屏滚动式-->
+
+    <div class="t-pagecont">
+
+        <details class="t-classcont">
+            <summary>时间</summary>
+            <div class="t-wenzhang-cont">
+                <div>
+                    <div class="t-wenzhang">
+                        <div>Title</div>
+                        <hr>
+                        <div>info</div>
+                    </div>
+                    <div class="t-wenzhang"></div>
+                </div>
+                <div>
+                    <div class="t-wenzhang"></div>
+                    <div class="t-wenzhang"></div>
+                </div>
+                <div>
+                    <div class="t-wenzhang"></div>
+                    <div class="t-wenzhang"></div>
+                </div>
+            </div>
+        </details>
+
+    </div>
+
+
+</div>
+<script>
+    HTMLCollection.prototype.forEach=Array.prototype.forEach;
+    $(".t-wenzhang").click(function () {
+        if($(this).hasClass("active"))
+        {
+            $(this).removeClass("active");
+        }
+        else
+        {
+            $(".t-wenzhang").removeClass("active");
+            $(this).addClass(("active"));
+        }
+
+    })
+    $(window).resize(function (e) {
+        var wth=window.innerWidth;
+        if(wth<512)
+        {
+            $(".t-pagecont")[0].children.forEach(function (ele) {
+                $(ele).show();
+            });
+        }
+    })
+    $(".t-wenzhang>div:last-child").click(function () {
+        alert("hello");
+    })
+</script>
