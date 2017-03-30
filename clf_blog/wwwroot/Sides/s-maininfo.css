@@ -1,0 +1,30 @@
+#s-maininfo{
+    display: flex;
+    flex-direction:column;
+    /*height: 400px;*/
+    /*width: 400px;*/
+    height: 100%;
+    width: 100%;
+    background-color: #f0f1f0;
+}
+#s-title{
+    flex-grow: 0;
+    height: 75px;
+    background-color: rgba(206, 205, 216, 0.19);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#s-info{
+    flex-grow: 0;
+    height: 50px;
+    background-color: #bababa;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#s-text{
+    background-color: rgba(227, 211, 244, 0.26);
+    flex-grow: 1;
+    padding: 10px;
+}

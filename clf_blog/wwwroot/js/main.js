@@ -28,23 +28,10 @@ $(function () {
 System.LoadPage = function (name, query) {
     //此函数根据name加载一个页面到maincontent中
     //query为查询参数
-    var href = "/Home/" + name;
-    $("#maincontent").load(href, query);
+    var href = "/Home/" + name+"?"+query;
+    window.location.href=href;
 }
-System.LoadSide = function (name, query) {
-    //由指定的查询参数从指定位置加载页面到main-sidecont中
-    var href = "/Sides/" + name;
-    $("#main-sidecont").load(name, query);
-}
-System.ShowArticle = function (id) {
-    //显示文章并且 显示侧边栏
-    System.LoadPage('Article', {
-        Id: id
-    });
-    System.LoadSide('Article', {
-        Id: id
-    });
-}
+
 var Debug = {};
 Debug.LoadPage = function (name) {
     $("#maincontent").load(name + ".html");

@@ -151,7 +151,6 @@ header>div>* {
     width: 100%;
     overflow: hidden;
     position: relative;
-    padding: 10px;
 }
 
 #main-sidecont:after {
@@ -159,7 +158,7 @@ header>div>* {
     content: '';
     width: 100%;
     height: 100%;
-    background-color: rgba(213, 139, 143, 0.87);
+    background-color: rgba(190, 183, 189, 0.59);
     filter: blur(5px);
     top: 0;
     left: 0;

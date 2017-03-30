@@ -175,7 +175,30 @@
     height: 50px;
     cursor: pointer;
 }
+.i-msg>div{
+    text-align: right;
+    margin-top: 20px;
+}
+.i-msg>div>a{
+    display: inline-flex;
+    color: #222222;
+    font-weight: bold;
+    font-size: small;
+    text-decoration: none;
+    height: 50px;
+    width: 8rem;
+    background-color: rgba(157, 133, 179, 0.56);
+    justify-content: center;
+    align-items: center;
+}
+.i-msg>div>a:active{
+    background-color: rgba(130, 109, 148, 0.56);
+}
 @media screen and (max-width:512px) {
+    .i-msg>div>a {
+        display: flex;
+        width: 100%;
+    }
     .i-sidebar{
         display: none;
     }
