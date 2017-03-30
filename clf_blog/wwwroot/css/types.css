@@ -34,14 +34,15 @@
 .t-classcont{
     background-color: #f0f1f0;
     box-shadow: rgba(219, 219, 219, 0.6) 1px 1px 10px 2px;
-
+    display:block;
     box-shadow: rgba(163, 166, 164, 0.28) 0px 0px 5px 2px, rgba(191, 195, 192, 0.2) 0px 0px 10px 5px;
 }
-.t-classcont>summary{
-    background-color: #f0f1f0;
-    padding: 10px;
-    padding-left: 20px;
-}
+    .t-classcont > summary {
+        background-color: #f0f1f0;
+        padding: 10px;
+        padding-left: 20px;
+        display: block;
+    }
 .t-classcont>summary:focus {
     outline: none;
 }

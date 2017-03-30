@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
+using clf_blog.Model;
 namespace clf_blog.Controllers
 {
     public class HomeController : Controller
@@ -20,13 +20,17 @@ namespace clf_blog.Controllers
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult BlogList()
         {
-            ViewData["Message"] = "Your contact page.";
-
+            //获取博客列表
+            BlogModel mod = new BlogModel();
+            BlogModel.Blog[] data=mod.GetBlogListOfRange(1, 10);
+            return View(data);
+        }
+        public IActionResult Types()
+        {
             return View();
         }
-
         public IActionResult Error()
         {
             return View();

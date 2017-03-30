@@ -19,16 +19,16 @@ $(function () {
     System.UseActive(".canactive");
     $(".menuitem").click(function () {
         var pagename = $(this).attr("data-pageid");
-        Debug.LoadPage(pagename);
+        //Debug.LoadPage(pagename);
+        System.LoadPage(pagename);
     });
-    Debug.LoadPage("Index");
-
+    //Debug.LoadPage("Index");
 });
 
 System.LoadPage = function (name, query) {
     //此函数根据name加载一个页面到maincontent中
     //query为查询参数
-    var href = "/Home/" + name+"?"+query;
+    var href = "/Home/" + name+(query==null? "":("?"+query));
     window.location.href=href;
 }
 

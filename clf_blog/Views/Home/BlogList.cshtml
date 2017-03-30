@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model clf_blog.Model.BlogModel.Blog[]
+@{
+    ViewData["Title"] = "列表";
+    var basehref = "/Home/Article?Id=";
+}
+<div id="mainspace"></div>
+<div id="bltop">
+    <link rel="stylesheet" href="/css/bloglist.css">
+    @foreach (var bl in Model)
+    {
+        var text = bl.Content;
+        if(text.Length>300)
+        {
+            text = text.Substring(0, 300);
+
+        }
+        <div class="blitem">
+            <a class="bltitle" href="@(basehref+bl.Id)">
+                @bl.Title
+            </a>
+            <div class="bltime">
+                @bl.Time
+            </div>
+            <div class="blcontent">
+                @text
+            </div>
+            <div class="blfooter">
+                评论(10) 赞(10) 踩(10)
+            </div>
+        </div>
+
+    }
+</div>

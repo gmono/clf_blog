@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 using System.IO;
-namespace coretest.Model
+namespace clf_blog.Model
 {
     public class BlogModel
     {
@@ -15,7 +15,7 @@ namespace coretest.Model
             public string Content;
             public DateTime Time;
             public long Type;
-            public Stream Data;
+            public TextReader Data;
             public long AuthorId;
             public string ArticleInfo;
         }
@@ -47,10 +47,10 @@ namespace coretest.Model
                 bg.Title = reader.GetString(1);
                 bg.Content = reader.GetString(2);
                 bg.Type = reader.GetInt64(3);
-                bg.Time = reader.GetDateTime(4);
-                bg.Data=reader.GetStream(5);
+                bg.Time = DateTime.Parse(reader.GetString(4));
+                bg.Data = reader.GetTextReader(5);
                 bg.AuthorId = reader.GetInt64(6);
-                bg.ArticleInfo = reader.GetString(7);
+                bg.ArticleInfo = reader.IsDBNull(7)? null:reader.GetString(7);
                 //bg.Data = reader.GetBlob(4,false);
                 return bg;
             }
@@ -66,7 +66,7 @@ namespace coretest.Model
                 {
                     Title = "错误",
                     Content = "没有此文章！",
-                    Time = new DateTime(),
+                    Time = DateTime.Now,
                     Id = 0,
                     Data = null
                 };
@@ -101,6 +101,19 @@ namespace coretest.Model
                 if (ret.Count == 0) return null;
                 return ret.ToArray();
             }
+        }
+        /// <summary>
+        /// 获取在指定时间范围内的 属于指定类型的文章的前数条
+        /// </summary>
+        /// <param name="types">指定类型</param>
+        /// <param name="start">开始时间</param>
+        /// <param name="end">结束时间</param>
+        /// <param name="tops">前N条开始位置</param>
+        /// <param name="tope">前N条结束位置</param>
+        /// <returns></returns>
+        public Blog[] GetBlogListOfTypes(long[] types,DateTime start,DateTime end,long tops,long tope)
+        {
+            return null;
         }
 
     }

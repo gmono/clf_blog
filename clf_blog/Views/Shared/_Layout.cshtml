@@ -1,12 +1,89 @@
-﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - clf_blog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+    <title>CLF BLOG-@ViewBag.Title</title>
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="/css/animate.min.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/main.css">
+
+
 </head>
+
 <body>
+    <!--   规范：只有main页面使用div以外的容器-->
+    <!--   main页使用main前缀 每个子页使用对应前缀-->
+    <!--    main页的js可以写在公共空间 子页全部写在function内-->
+    <!--    预定义类 hover active-->
+    <!--    由于统一分割需要 main页可以引入字体 确定公用css类-->
+    <!--    main页可以引入公用库文件 并且所有库文件都在main页引入-->
+
+    <header>
+        <!--    外容器-->
+        <div class="panel" id="main-navback"></div>
+        <div id="main-hcont">
+            <!--       内容器-->
+            <div id="mainlogo">
+                <!--                logo容器-->
+            </div>
+            <ul id="mainnav">
+                <!--                导航栏容器-->
+                <li class="canactive menuitem" data-active="#mainnav" data-pageid="Index">主页</li>
+                <li class="canactive menuitem" data-active="#mainnav" data-pageid="BlogList">目录</li>
+                <li class="canactive menuitem" data-active="#mainnav" data-pageid="Types">分类</li>
+                <li class="canactive menuitem" data-active="#mainnav" data-pageid="About">关于</li>
+                <li class="canactive menuitem" data-active="#mainnav">更多</li>
+                <!--这个更多不确定要不要-->
+            </ul>
+            <div class="canactive" data-active="#mainnav" id="mainbtn">
+                <!--                导航栏按钮容器-->
+                <svg>
+                    <use xlink:href="#icon-caidan"></use>
+                </svg>
+            </div>
+        </div>
+    </header>
+    <div id="maincontent">
+        <!--        主体页面区域-->
+        <!--        ajax加载-->
+
         @RenderBody()
+
+    </div>
+    <aside id="mainside">
+        <!--        侧边栏区域-->
+        <!--        侧边栏为简单信息展示 例如文章作者 目录等附加信息-->
+        <div id="main-sidecont">
+            <!--        侧边栏容器 侧边栏aside提供一个定位容器此为内容容器-->
+            <!--ajax加载域-->
+            @if(!IsSectionDefined("Side"))
+            {
+                
+            }
+            else
+            {
+                @RenderSection("Side")
+
+            }
+        </div>
+    </aside>
+    <footer>
+        <!--    页脚区域-->
+        hello world hello world
+    </footer>
+    <!--    挂件区域-->
+    <div id="main-widgets">
+        <!--        单纯容器 挂件都是fixed-->
+        <div id="mainsbtn" class="canactive panel" data-active="#mainside,#mainsbtn">
+        </div>
+    </div>
+
+    <script src="//at.alicdn.com/t/font_khgis1qiuzqwipb9.js"></script>
 </body>
+
 </html>
