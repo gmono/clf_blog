@@ -1,5 +1,6 @@
-.t-pagecont{
+.t-pagecont {
     padding: 20px;
+    animation: fadeInUp 1s cubic-bezier(1, -0.09, .07, .64);
 }
 .t-wenzhang-cont{
     display: flex;

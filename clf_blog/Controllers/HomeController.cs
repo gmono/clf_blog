@@ -36,5 +36,10 @@ namespace clf_blog.Controllers
         {
             return View();
         }
+
+        public IActionResult Article(long id)
+        {
+            return View(id);
+        }
     }
 }

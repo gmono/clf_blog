@@ -47,7 +47,7 @@ namespace clf_blog.Model
                 bg.Title = reader.GetString(1);
                 bg.Content = reader.GetString(2);
                 bg.Type = reader.GetInt64(3);
-                bg.Time = DateTime.Parse(reader.GetString(4));
+                bg.Time =new DateTime(reader.GetInt64(4));
                 bg.Data = reader.GetTextReader(5);
                 bg.AuthorId = reader.GetInt64(6);
                 bg.ArticleInfo = reader.IsDBNull(7)? null:reader.GetString(7);
@@ -92,7 +92,7 @@ namespace clf_blog.Model
                 connect.Open();
                 var cmd = connect.CreateCommand();
                 //根据参数构造查询字符串
-                string nowcmd = "";
+                string nowcmd = "Blog"; //默认为表名
                 if(types!=null)
                 {
                     string[] tss = (from t in types select string.Format("Type={0}", t)).ToArray();

@@ -41,6 +41,18 @@ namespace clf_blog.Model
             }
             return null;
         }
+        public TypeInfo GetTypeInfoFromId(long id)
+        {
+            using (var connect = new SqliteConnection(source))
+            {
+                connect.Open();
+                var cmd = connect.CreateCommand();
+                cmd.CommandText = string.Format("select * from Type where Id={0}", id);
+                var reader = cmd.ExecuteReader();
+                var ret = ToType(reader);
+                return ret;
+            }
+        }
     }
 
 }
