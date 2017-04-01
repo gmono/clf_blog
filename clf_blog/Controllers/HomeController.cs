@@ -25,6 +25,7 @@ namespace clf_blog.Controllers
             //获取博客列表
             BlogModel mod = new BlogModel();
             BlogModel.Blog[] data=mod.GetBlogListOfRange(1, 10);
+            ViewData["test"] = About();
             return View(data);
         }
         public IActionResult Types()

@@ -1,0 +1,33 @@
+﻿@*默认侧边栏信息页*@
+@{ 
+    //获取信息
+    //此页面为部分页面 信息获取直接在页面内
+    var bl = new clf_blog.Model.BlogModel();
+    var asum = bl.GetSum();
+}
+    <link rel="stylesheet" href="/Sides/s-maininfo.css">
+    <div id="s-maininfo">
+        <!--容器-->
+        <div id="s-title">
+            <!--显示头像 Logo的区域-->
+            fasdfasdf
+        </div>
+        <div id="s-info">
+            <!--显示概要信息的区域-->
+            <div>
+                文章数:@asum
+            </div>
+            <div>
+                累计通知:
+            </div>
+            <div>
+                累计评论:
+            </div>
+        </div>
+        <div id="s-text">
+            <!--介绍信息的区域-->
+            Lorem ipsum dolor sit amet, consectetur adipis
+            icing elit. A atque doloribus, eligendi mai
+            ores molestiae omnis placeat quaerat quam rerum ullam!
+        </div>
+    </div>
