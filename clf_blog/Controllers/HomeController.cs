@@ -4,19 +4,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using clf_blog.Model;
+using clf_blog.PageModel;
 namespace clf_blog.Controllers
 {
     public class HomeController : Controller
     {
         public IActionResult Index()
         {
-            return View();
+            var blg=new BlogModel();
+            var mod=new IndexModel();
+            mod.Hots=blg.GetHot(10);
+            mod.News=blg.GetNew(10);
+            var msg=new MessageModel();
+            mod.TopMsgs=msg.GetTopMsgs(10);
+            return View(mod);
         }
 
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
-
+            
             return View();
         }
 
@@ -24,13 +31,17 @@ namespace clf_blog.Controllers
         {
             //获取博客列表
             BlogModel mod = new BlogModel();
-            BlogModel.Blog[] data=mod.GetBlogListOfRange(1, 10);
-            ViewData["test"] = About();
+            long pagesum;
+            BlogModel.Blog[] data=mod.GetBlogListOfRange(10, 0,out pagesum);
+            ViewData["PageSum"] = pagesum;
+            ViewData["NowPage"]=1;
             return View(data);
         }
         public IActionResult Types()
         {
-            return View();
+            var ts=new TypeModel();
+            var tss=ts.GetTypes();
+            return View(tss);
         }
         public IActionResult Error()
         {

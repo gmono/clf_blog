@@ -82,9 +82,11 @@ namespace clf_blog.Model
                 return bg;
             }
         }
-        public Blog[] GetBlogListOfRange(long start, long end,long[] types=null,DateTime? stime=null,DateTime? etime=null)
+        public Blog[] GetBlogListOfRange(long pagelen,long pageid,out long pagesum,long[] types=null,DateTime? stime=null,DateTime? etime=null)
         {
-            if (start <= 0 || end < start) return null;
+            long start=pagelen*pageid;
+            long end=start+pagelen-1;
+            if (start < 0 || end < start) {pagesum=0;return null;}
             List<Blog> ret = new List<Blog>();
         
             using (SqliteConnection connect = new SqliteConnection(source))
@@ -108,7 +110,7 @@ namespace clf_blog.Model
                 {
                     nowcmd = string.Format("select * from ({0}) where Time>={1} and Time<={2} order by Time desc",nowcmd, stime.Value.Ticks, etime.Value.Ticks);
                 }
-                nowcmd = string.Format("select * from ({0}) where Id>={1} and Id<={2}", nowcmd, start, end);
+                nowcmd = string.Format("select * from ({0}) order by Time desc limit {1},{2}", nowcmd, start, end);
                 cmd.CommandText = nowcmd;
                 var reader = cmd.ExecuteReader();
                 Blog bg = null;
@@ -116,7 +118,13 @@ namespace clf_blog.Model
                 {
                     ret.Add(bg);
                 }
-                if (ret.Count == 0) return null;
+                if (ret.Count == 0) {pagesum=0;return null;}
+                cmd.CommandText="select count(*) from Blog";
+                reader=cmd.ExecuteReader();
+                reader.Read();
+                long sum=reader.GetInt64(0);
+                //计算分页数
+                pagesum=sum/pagelen+(sum%pagelen!=0? 1:0);
                 return ret.ToArray();
             }
         }
@@ -182,6 +190,7 @@ namespace clf_blog.Model
                 return ret.ToArray();
             }
         }
+
 
     }
 }

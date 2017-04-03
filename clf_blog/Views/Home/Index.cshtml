@@ -5,6 +5,13 @@
 @section Side{
     @Html.Partial("MainSide")
 }
+@model clf_blog.PageModel.IndexModel
+@{
+    var hots=@Model.Hots;
+    var news=@Model.News;
+    var msgs=@Model.TopMsgs;
+    int i=0;
+}
 <link rel="stylesheet" href="/css/index.css">
 <div class="i-top">
     <!--   全屏滚动式-->
@@ -36,72 +43,83 @@
             <!--        卡片测试-->
             <h3>最热文章：</h3>
             <div class="i-wenzhang-cont">
-                <div>
-                    <div class="i-wenzhang">
-                        <div>Title</div>
+
+                                @for(i=0;i<@Model.Hots.Length;++i)
+                {
+                    if(i==0||i==3||i==6){
+                        @Html.Raw("<div>")
+                    }
+
+                    
+                                        <div class="i-wenzhang">
+                        <div>@hots[i].Title</div>
                         <hr>
                         <div>
-                            fffffffffffffffffffffffffffffffffffffffffffffffff
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad consectetur consequuntur, ea laboriosam nihil non officiis quas? Odit, vitae!
+                            @hots[i].Time
                         </div>
+                        <div>
+                            @hots[i].Content
+                        </div>
+        
                         <hr>
-                        <div>Footer</div>
+                        <a href="/Home/Article?Id=@hots[i].Id">点击进入-></a>
                     </div>
-                    <div class="i-wenzhang"></div>
-                </div>
-                <div>
-                    <div class="i-wenzhang"></div>
-                    <div class="i-wenzhang"></div>
-                </div>
-                <div>
-                    <div class="i-wenzhang"></div>
-                </div>
+
+                                        if(i==2||i==5||i==8){
+            @Html.Raw("</div>")
+            
+                    }
+                    
+
+                }
+                @if(!(i==3||i==6||i==9)) {@Html.Raw("</div>")}
             </div>
         </div>
         <div class="i-new">
             <!--    最新博客-->
             <h3>最新文章：</h3>
             <div class="i-wenzhang-cont">
-                <div>
-                    <div class="i-wenzhang">
-                        <div>Title</div>
+                                                @for(i=0;i<@Model.News.Length;++i)
+                {
+                    if(i==0||i==3||i==6){
+                        @Html.Raw("<div>")
+                    }
+
+                    
+                                        <div class="i-wenzhang">
+                        <div>@news[i].Title</div>
                         <hr>
-                        <div>Time</div>
+                        <div>
+                            @news[i].Time
+                        </div>
+                        <div>
+                            @news[i].Content
+                        </div>
+        
                         <hr>
-                        <div>Content</div>
-                        <hr>
-                        <div>点击进入-></div>
+                        <a href="/Home/Article?Id=@hots[i].Id">点击进入-></a>
                     </div>
-                    <div class="i-wenzhang"></div>
-                </div>
-                <div>
-                    <div class="i-wenzhang"></div>
-                    <div class="i-wenzhang"></div>
-                </div>
-                <div>
-                    <div class="i-wenzhang"></div>
-                </div>
+
+                                        if(i==2||i==5||i==8){
+            @Html.Raw("</div>")
+            
+                    }
+                    
+
+                }
+                @if(!(i==3||i==6||i==9)) {@Html.Raw("</div>")}
             </div>
         </div>
         <div class="i-msg">
             <!--    通知区域-->
             <h3>最近通知：</h3>
-            <details>
-                <summary>hello</summary>
-                <h2>test</h2>
-            </details>
-            <details>
-                <summary>演示通知</summary>
-                <h2>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing e
-                    lit. Doloremque earum enim id impedit iusto neq
-                    ue perspiciatis quos reiciendis sed ullam?
-                </h2>
-            </details>
-            <details>
-                <summary>hello</summary>
-                <h2>test</h2>
-            </details>
+            @foreach(var t in @msgs)
+            {
+                 <details>
+                <summary>@t.Name</summary>
+                <h2>@t.Content</h2>
+                </details>
+            }
             <hr>
             <div>
                 <a href="#">显示更多通知</a>
@@ -142,8 +160,5 @@ $(".i-wenzhang").click(function () {
                 $(ele).show();
             });
         }
-    })
-    $(".i-wenzhang>div:last-child").click(function () {
-        alert("hello");
     })
 </script>

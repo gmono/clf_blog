@@ -38,13 +38,13 @@ namespace clf_blog.Model
             }
             return null;
         }
-        public Message[] GetTopMsgs()
+        public Message[] GetTopMsgs(long count)
         {
             using (var connect = new SqliteConnection(source))
             {
                 connect.Open();
                 var cmd = connect.CreateCommand();
-                cmd.CommandText = "SELECT * FROM Blog ORDER BY Id ASC LIMIT 0,10";
+                cmd.CommandText = string.Format("SELECT * FROM Blog ORDER BY Id ASC LIMIT 0,{0}",count);
                 var reader = cmd.ExecuteReader();
                 List<Message> ret = new List<Message>();
                 Message msg = null;

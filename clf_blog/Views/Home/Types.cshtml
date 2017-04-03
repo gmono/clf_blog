@@ -1,9 +1,5 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-    ViewData["Title"] = "分类";
-}
+﻿@* For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860 *@ @{ ViewData["Title"]
+= "分类"; }
 
 <link rel="stylesheet" href="/css/types.css">
 <div class="t-top">
@@ -13,6 +9,41 @@
 
         <details class="t-classcont" open>
             <summary>时间</summary>
+            <div class="t-wenzhang-cont">
+                <div>
+                    <div class="t-wenzhang">
+                        <div>今天</div>
+                        <div>今天发布的文章</div>
+                    </div>
+                    <div class="t-wenzhang">
+                        <div>三天以内</div>
+                        <div>三天以内发布的文章</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="t-wenzhang">
+                        <div>一星期内</div>
+                        <div>一星期内发布的文章</div>
+                    </div>
+                    <div class="t-wenzhang">
+                        <div>一个月内</div>
+                        <div>一个月内发布的文章</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="t-wenzhang">
+                        <div>一年内</div>
+                        <div>一年内发布的文章</div>
+                    </div>
+                    <div class="t-wenzhang">
+                        <div>三年内</div>
+                        <div>三年内发布的文章</div>
+                    </div>
+                </div>
+            </div>
+        </details>
+        <details style="margin-top:20px" class="t-classcont" open>
+            <summary>类型</summary>
             <div class="t-wenzhang-cont">
                 <div>
                     <div class="t-wenzhang">
@@ -37,23 +68,19 @@
 
 </div>
 <script>
-    HTMLCollection.prototype.forEach=Array.prototype.forEach;
+    HTMLCollection.prototype.forEach = Array.prototype.forEach;
     $(".t-wenzhang").click(function () {
-        if($(this).hasClass("active"))
-        {
+        if ($(this).hasClass("active")) {
             $(this).removeClass("active");
-        }
-        else
-        {
+        } else {
             $(".t-wenzhang").removeClass("active");
             $(this).addClass(("active"));
         }
 
     })
     $(window).resize(function (e) {
-        var wth=window.innerWidth;
-        if(wth<512)
-        {
+        var wth = window.innerWidth;
+        if (wth < 512) {
             $(".t-pagecont")[0].children.forEach(function (ele) {
                 $(ele).show();
             });

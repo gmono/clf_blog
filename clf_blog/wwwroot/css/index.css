@@ -1,4 +1,6 @@
-.i-top {}
+.i-top {
+    height: 100%;
+}
 
 .i-pagecont,
 .i-sidebar {
@@ -154,8 +156,12 @@
 .i-pagecont>div>h3{
     display: none;
 }
-.i-wenzhang>div:last-child{
-    display: none;
+/*这是链接*/
+.i-wenzhang>a{
+    /*display: none;*/
+    text-decoration: none;
+    font-style: normal;
+    color:black;
 }
 .i-msg
 {
@@ -195,6 +201,9 @@
     background-color: rgba(130, 109, 148, 0.56);
 }
 @media screen and (max-width:512px) {
+    .i-top{
+        height: auto;
+    }
     .i-msg>div>a {
         display: flex;
         width: 100%;
@@ -203,8 +212,7 @@
         display: none;
     }
     .i-pagecont{
-        overflow: visible;
-        height: 100%;
+        position: static;
         padding: 0;
     }
     .i-pagecont>div{

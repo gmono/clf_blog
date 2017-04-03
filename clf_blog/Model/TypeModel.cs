@@ -53,6 +53,24 @@ namespace clf_blog.Model
                 return ret;
             }
         }
+        
+        public TypeInfo[] GetTypes()
+        {
+            using(var connect=new SqliteConnection(source))
+            {
+                connect.Open();
+                var cmd=connect.CreateCommand();
+                cmd.CommandText="select * from Type order by id asc";
+                var reader=cmd.ExecuteReader();
+                var ret=new List<TypeInfo>();
+                TypeInfo now=null;
+                while((now=ToType(reader))!=null)
+                {
+                    ret.Add(now);
+                }
+                return ret.ToArray();
+            }
+        }
     }
 
 }
