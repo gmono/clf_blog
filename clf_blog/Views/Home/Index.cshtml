@@ -7,10 +7,10 @@
 }
 @model clf_blog.PageModel.IndexModel
 @{
-    var hots=@Model.Hots;
-    var news=@Model.News;
-    var msgs=@Model.TopMsgs;
-    int i=0;
+    var hots = @Model.Hots;
+    var news = @Model.News;
+    var msgs = @Model.TopMsgs;
+    int i = 0;
 }
 <link rel="stylesheet" href="/css/index.css">
 <div class="i-top">
@@ -44,14 +44,15 @@
             <h3>最热文章：</h3>
             <div class="i-wenzhang-cont">
 
-                                @for(i=0;i<@Model.Hots.Length;++i)
+                @for (i = 0; i < @Model.Hots.Length; ++i)
                 {
-                    if(i==0||i==3||i==6){
+                    if (i == 0 || i == 3 || i == 6)
+                    {
                         @Html.Raw("<div>")
                     }
 
-                    
-                                        <div class="i-wenzhang">
+
+                    <div class="i-wenzhang">
                         <div>@hots[i].Title</div>
                         <hr>
                         <div>
@@ -60,33 +61,36 @@
                         <div>
                             @hots[i].Content
                         </div>
-        
+
                         <hr>
                         <a href="/Home/Article?Id=@hots[i].Id">点击进入-></a>
                     </div>
 
-                                        if(i==2||i==5||i==8){
-            @Html.Raw("</div>")
-            
+                    if (i == 2 || i == 5 || i == 8)
+                    {
+                        @Html.Raw("</div>")
+
                     }
-                    
+
 
                 }
-                @if(!(i==3||i==6||i==9)) {@Html.Raw("</div>")}
+                @if (!(i == 3 || i == 6 || i == 9))
+                {@Html.Raw("</div>")}
             </div>
         </div>
         <div class="i-new">
             <!--    最新博客-->
             <h3>最新文章：</h3>
             <div class="i-wenzhang-cont">
-                                                @for(i=0;i<@Model.News.Length;++i)
+                @for (i = 0; i < @Model.News.Length; ++i)
                 {
-                    if(i==0||i==3||i==6){
+                    if (i == 0 || i == 3 || i == 6)
+                    {
                         @Html.Raw("<div>")
                     }
 
-                    
-                                        <div class="i-wenzhang">
+
+                    <div class="i-wenzhang">
                         <div>@news[i].Title</div>
                         <hr>
                         <div>
@@ -95,29 +99,31 @@
                         <div>
                             @news[i].Content
                         </div>
-        
+
                         <hr>
                         <a href="/Home/Article?Id=@hots[i].Id">点击进入-></a>
                     </div>
 
-                                        if(i==2||i==5||i==8){
-            @Html.Raw("</div>")
-            
+                    if (i == 2 || i == 5 || i == 8)
+                    {
+                        @Html.Raw("</div>")
+
                     }
-                    
+
 
                 }
-                @if(!(i==3||i==6||i==9)) {@Html.Raw("</div>")}
+                @if (!(i == 3 || i == 6 || i == 9))
+                {@Html.Raw("</div>")}
             </div>
         </div>
         <div class="i-msg">
             <!--    通知区域-->
             <h3>最近通知：</h3>
-            @foreach(var t in @msgs)
+            @foreach (var t in @msgs)
             {
-                 <details>
-                <summary>@t.Name</summary>
-                <h2>@t.Content</h2>
+                <details>
+                    <summary>@t.Name</summary>
+                    <h2>@t.Content</h2>
                 </details>
             }
             <hr>
@@ -130,32 +136,29 @@
 
 </div>
 <script>
-    HTMLCollection.prototype.forEach=Array.prototype.forEach;
-$(".i-sbtntext").click(function () {
-    $(".i-sbtntext").removeClass("active");
-    $(this).addClass("active");
-    var val=$(this).attr("data-trans");
-    $(".i-pagecont")[0].children.forEach(function (ele) {
-        $(ele).hide();
+    HTMLCollection.prototype.forEach = Array.prototype.forEach;
+    $(".i-sbtntext").click(function () {
+        $(".i-sbtntext").removeClass("active");
+        $(this).addClass("active");
+        var val = $(this).attr("data-trans");
+        $(".i-pagecont")[0].children.forEach(function (ele) {
+            $(ele).hide();
+        });
+        $(val).show();
     });
-    $(val).show();
-});
-$(".i-wenzhang").click(function () {
-    if($(this).hasClass("active"))
-    {
-        $(this).removeClass("active");
-    }
-    else
-    {
-        $(".i-wenzhang").removeClass("active");
-        $(this).addClass(("active"));
-    }
+    $(".i-wenzhang").click(function () {
+        if ($(this).hasClass("active")) {
+            $(this).removeClass("active");
+        }
+        else {
+            $(".i-wenzhang").removeClass("active");
+            $(this).addClass(("active"));
+        }
 
-})
+    })
     $(window).resize(function (e) {
-        var wth=window.innerWidth;
-        if(wth<512)
-        {
+        var wth = window.innerWidth;
+        if (wth < 512) {
             $(".i-pagecont")[0].children.forEach(function (ele) {
                 $(ele).show();
             });
