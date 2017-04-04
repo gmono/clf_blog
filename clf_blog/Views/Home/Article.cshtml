@@ -3,6 +3,10 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @model clf_blog.Model.BlogModel.Blog
+@{
+    ViewData["Title"]="文章-"+Model.Title;
+}
+
 @section Side{
     @Html.Partial("MainSide")
 }
@@ -18,7 +22,7 @@
         </div>
         <div class="art-content">
             <div class="art-wenzhang">
-                @Model.Content
+                @Html.Raw(Model.Content)
             </div>
 
             <!-- UY BEGIN -->

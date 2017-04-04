@@ -18,7 +18,7 @@
         if(text.Length>300)
         {
             text = text.Substring(0, 300);
-
+            text+="......";
         }
         <div class="blitem">
             <a class="bltitle" href="@(basehref+bl.Id)">
@@ -28,7 +28,7 @@
                 @bl.Time
             </div>
             <div class="blcontent">
-                @text
+                @Html.Raw(text)
             </div>
             <div class="blfooter">
                 评论(10) 赞(10) 踩(10)
