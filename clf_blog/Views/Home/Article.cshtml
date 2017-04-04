@@ -2,7 +2,29 @@
     文章显示视图页
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model long
-@{
-    <h1>hello world @Model </h1>
+@model clf_blog.Model.BlogModel.Blog
+@section Side{
+    @Html.Partial("MainSide")
 }
+<link rel="stylesheet" href="/css/article.css">
+    <div class="art-top">
+        <div class="art-head">
+            <div class="art-title">
+                @Model.Title
+            </div>
+            <div class="art-time">
+                @Model.Time
+            </div>
+        </div>
+        <div class="art-content">
+            <div class="art-wenzhang">
+                @Model.Content
+            </div>
+
+            <!-- UY BEGIN -->
+            <div id="uyan_frame"></div>
+            <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2126764"></script>
+            <!-- UY END -->
+        </div>
+
+    </div>

@@ -60,7 +60,7 @@ namespace clf_blog.Model
             {
                 connect.Open();
                 var cmd=connect.CreateCommand();
-                cmd.CommandText="select * from Type order by id asc";
+                cmd.CommandText="select * from Types order by id asc";
                 var reader=cmd.ExecuteReader();
                 var ret=new List<TypeInfo>();
                 TypeInfo now=null;

@@ -50,7 +50,9 @@ namespace clf_blog.Controllers
 
         public IActionResult Article(long id)
         {
-            return View(id);
+            var bg=new BlogModel();
+            var data=bg.GetBlogFromIndex(id);
+            return View(data);
         }
     }
 }
