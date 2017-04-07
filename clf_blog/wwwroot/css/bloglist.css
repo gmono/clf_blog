@@ -42,6 +42,11 @@
 .blfooter {
     text-align: right;
 }
+.blfooter>span{
+    font-size:small;
+    color:darkgray;
+    margin-left:10px;
+}
 
 @media screen and (max-width:768px) {
     .blitem {

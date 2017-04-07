@@ -12,30 +12,41 @@
 <div id="mainspace"></div>
 <div id="bltop">
     <link rel="stylesheet" href="/css/bloglist.css">
-    @foreach (var bl in Model)
+    @if (Model != null)
     {
-        var text = bl.Content;
-        if(text.Length>300)
+
+        @foreach (var bl in Model)
         {
-            text = text.Substring(0, 300);
-            text+="......";
+            var text = bl.Content;
+            if (text.Length > 300)
+            {
+                text = text.Substring(0, 300);
+                text += "......";
+            }
+            <div class="blitem">
+                <a class="bltitle" href="@(basehref + bl.Id)">
+                    @bl.Title
+                </a>
+                <div class="bltime">
+                    @bl.Time
+                </div>
+                <div class="blcontent">
+                    @Html.Raw(text)
+                </div>
+                <div class="blfooter">
+                    <span>查看(@bl.SeeSum)</span>
+                    <span>作者:@(new clf_blog.Model.AuthorModel().GetAuthorInfo(bl.AuthorId).Name)</span>
+                </div>
+            </div>
+
         }
-        <div class="blitem">
-            <a class="bltitle" href="@(basehref+bl.Id)">
-                @bl.Title
-            </a>
-            <div class="bltime">
-                @bl.Time
-            </div>
-            <div class="blcontent">
-                @Html.Raw(text)
-            </div>
-            <div class="blfooter">
-                查看(@bl.SeeSum)
-            </div>
-        </div>
+    }
+    else
+    {
+        <h2 style="text-align:center;margin:100px 0 100px 0;">没有相关内容.........</h2>
 
     }
-    
+
+
 </div>
 @Html.Partial("PageSplit",ViewContext.HttpContext.Request.Query)

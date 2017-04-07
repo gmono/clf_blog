@@ -121,11 +121,8 @@ namespace clf_blog.Model
                     ret.Add(bg);
                 }
                 if (ret.Count == 0) {pagesum=0;return null;}
-                cmd.CommandText="select count(*) from Blog";
-                reader=cmd.ExecuteReader();
-                reader.Read();
-                long sum=reader.GetInt64(0);
                 //计算分页数
+                long sum = ret.Count;
                 pagesum=sum/pagelen+(sum%pagelen!=0? 1:0);
                 return ret.ToArray();
             }
@@ -194,13 +191,15 @@ namespace clf_blog.Model
         }
         public void SeeOne(long id)
         {
+            Blog tb = GetBlogFromIndex(id);
             using (SqliteConnection connect = new SqliteConnection(source))
             {
                 List<Blog> ret = new List<Blog>();
                 connect.Open();
                 var cmd = connect.CreateCommand();
-                cmd.CommandText = string.Format("select * from Blog order by SeeSum desc limit 0,{0}", count - 1);
-
+                
+                cmd.CommandText = string.Format("update Blog set SeeSum={0} where Id={1} ", tb.SeeSum+1,id);
+                cmd.ExecuteNonQuery();
             }
         }
 

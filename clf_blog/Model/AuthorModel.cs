@@ -43,6 +43,7 @@ namespace clf_blog.Model
             string qstr = string.Format("select * from Author where Id={0}", Id);
             using (SqliteConnection connect = new SqliteConnection(source))
             {
+                connect.Open();
                 var cmd = connect.CreateCommand();
                 cmd.CommandText = qstr;
                 var reader=cmd.ExecuteReader();

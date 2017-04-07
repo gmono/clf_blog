@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model long
+@{
+    var ag = new clf_blog.Model.AuthorModel();
+    var t=ag.GetAuthorInfo(Model);
+}
+
+<link rel="stylesheet" href="/Sides/s-maininfo.css">
+<div id="s-maininfo">
+    <!--容器-->
+    <div id="s-title">
+        <!--显示头像 Logo的区域-->
+        <h1>作者信息</h1>
+    </div>
+    <div id="s-info">
+        <!--显示概要信息的区域-->
+        <div>
+            姓名:@t.Name
+        </div>
+
+    </div>
+    <div id="s-text">
+        <!--介绍信息的区域-->
+        @t.Info
+    </div>
+</div>

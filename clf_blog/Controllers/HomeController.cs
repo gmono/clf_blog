@@ -45,15 +45,15 @@ namespace clf_blog.Controllers
             }
             if (query["stime"].Count > 0)
             {
-                DateTime ttime;
-                if(DateTime.TryParse(query["stime"][0], out ttime))
-                    stime = ttime;
+                long ticks;
+                if (long.TryParse(query["stime"][0], out ticks))
+                    stime = new DateTime(ticks);
             }
             if (query["etime"].Count > 0)
             {
-                DateTime ttime;
-                if (DateTime.TryParse(query["etime"][0], out ttime))
-                    etime = ttime;
+                long ticks;
+                if (long.TryParse(query["etime"][0], out ticks))
+                    etime = new DateTime(ticks);
             }
             //获取博客列表
             BlogModel mod = new BlogModel();
@@ -78,6 +78,7 @@ namespace clf_blog.Controllers
         {
             var bg=new BlogModel();
             var data=bg.GetBlogFromIndex(id);
+            //bg.SeeOne(id);
             return View(data);
         }
     }

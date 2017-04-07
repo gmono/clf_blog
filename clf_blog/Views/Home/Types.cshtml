@@ -1,5 +1,5 @@
 ﻿@* For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860 *@
- @{ ViewData["Title"]= "分类"; }
+@{ ViewData["Title"] = "分类"; }
 @model clf_blog.Model.TypeModel.TypeInfo[]
 @section Side{
     @Html.Partial("MainSide")
@@ -13,42 +13,48 @@
         <details class="t-classcont" open>
             <summary>时间</summary>
             <div class="t-wenzhang-cont">
-                <div>
+                <a href="/Home/BlogList?stime=@(DateTime.Today.Ticks)&etime=@(DateTime.Now.Ticks)">
                     <div class="t-wenzhang">
                         <div>今天</div>
                         <div>今天发布的文章</div>
                     </div>
+                </a>
+                <a href="/Home/BlogList?stime=@(DateTime.Today.AddDays(-3).Ticks)&etime=@(DateTime.Today.Ticks)">
                     <div class="t-wenzhang">
                         <div>三天以内</div>
                         <div>三天以内发布的文章</div>
                     </div>
-                </div>
-                <div>
+                </a>
+                <a href="/Home/BlogList?stime=@(DateTime.Today.AddDays(-7).Ticks)&etime=@(DateTime.Today.Ticks)">
                     <div class="t-wenzhang">
                         <div>一星期内</div>
                         <div>一星期内发布的文章</div>
                     </div>
+                </a>
+                <a href="/Home/BlogList?stime=@(DateTime.Today.AddDays(-30).Ticks)&etime=@(DateTime.Today.Ticks)">
                     <div class="t-wenzhang">
                         <div>一个月内</div>
                         <div>一个月内发布的文章</div>
                     </div>
-                </div>
-                <div>
+                </a>
+                <a href="/Home/BlogList?stime=@(DateTime.Today.AddDays(-365).Ticks)&etime=@(DateTime.Today.Ticks)">
                     <div class="t-wenzhang">
                         <div>一年内</div>
                         <div>一年内发布的文章</div>
                     </div>
+                </a>
+                <a href="/Home/BlogList?stime=@(DateTime.Today.AddDays(-1095).Ticks)&etime=@(DateTime.Today.Ticks)">
                     <div class="t-wenzhang">
                         <div>三年内</div>
                         <div>三年内发布的文章</div>
                     </div>
-                </div>
+                </a>
             </div>
         </details>
         <details style="margin-top:20px" class="t-classcont" open>
             <summary>类型</summary>
             <div class="t-wenzhang-cont">
-                @foreach(var t in Model)
+                @foreach (var t in Model)
                 {
                     <a href="/Home/BlogList?&type=@t.Id" style="text-decoration:none">
                         <div class="t-wenzhang">
