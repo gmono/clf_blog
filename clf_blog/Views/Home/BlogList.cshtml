@@ -31,16 +31,11 @@
                 @Html.Raw(text)
             </div>
             <div class="blfooter">
-                评论(10) 赞(10) 踩(10)
+                查看(@bl.SeeSum)
             </div>
         </div>
 
     }
-        <div class="blpages">
-        <a class="blplink"> << </a>
-        <a class="blplink">1</a>
-        <a class="blplink">2</a>
-        <a class="blplink">3</a>
-        <a class="blplink"> >> </a>
-    </div>
+    
 </div>
+@Html.Partial("PageSplit",ViewContext.HttpContext.Request.Query)

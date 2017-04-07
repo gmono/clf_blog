@@ -46,12 +46,10 @@
 
                 @for (i = 0; i < @Model.Hots.Length; ++i)
                 {
-                    if (i == 0 || i == 3 || i == 6)
+                    if (hots[i].Content.Length > 100)
                     {
-                        @Html.Raw("<div>")
+                        hots[i].Content = hots[i].Content.Substring(0, 100);
                     }
-
-
                     <div class="i-wenzhang">
                         <div>@hots[i].Title</div>
                         <hr>
@@ -59,24 +57,16 @@
                             @hots[i].Time
                         </div>
                         <div>
-                            @hots[i].Content
+                            @Html.Raw(hots[i].Content)
                         </div>
 
                         <hr>
-                        <a href="/Home/Article?Id=@hots[i].Id">点击进入-></a>
+                        <a href="/Home/Article?Id=@hots[i].Id">点击进入</a>
                     </div>
-
-                    if (i == 2 || i == 5 || i == 8)
-                    {
-                        @Html.Raw("</div>")
-
-                    }
-
-
                 }
-                @if (!(i == 3 || i == 6 || i == 9))
-                {@Html.Raw("</div>")}
+                <div style="height:50px;width:100%"></div>
             </div>
+
         </div>
         <div class="i-new">
             <!--    最新博客-->
@@ -84,11 +74,6 @@
             <div class="i-wenzhang-cont">
                 @for (i = 0; i < @Model.News.Length; ++i)
                 {
-                    if (i == 0 || i == 3 || i == 6)
-                    {
-                        @Html.Raw("<div>")
-                    }
-
 
                     <div class="i-wenzhang">
                         <div>@news[i].Title</div>
@@ -97,23 +82,14 @@
                             @news[i].Time
                         </div>
                         <div>
-                            @news[i].Content
+                            @Html.Raw(news[i].Content)
                         </div>
 
                         <hr>
-                        <a href="/Home/Article?Id=@hots[i].Id">点击进入-></a>
+                        <a href="/Home/Article?Id=@hots[i].Id">点击进入</a>
                     </div>
-
-                    if (i == 2 || i == 5 || i == 8)
-                    {
-                        @Html.Raw("</div>")
-
-                    }
-
-
                 }
-                @if (!(i == 3 || i == 6 || i == 9))
-                {@Html.Raw("</div>")}
+                <div style="height:50px;width:100%"></div>
             </div>
         </div>
         <div class="i-msg">

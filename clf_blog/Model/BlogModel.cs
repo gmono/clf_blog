@@ -18,6 +18,7 @@ namespace clf_blog.Model
             public TextReader Data;
             public long AuthorId;
             public string ArticleInfo;
+            public long SeeSum;
         }
         static string source = null;
         public BlogModel()
@@ -51,6 +52,7 @@ namespace clf_blog.Model
                 bg.Data = reader.GetTextReader(5);
                 bg.AuthorId = reader.GetInt64(6);
                 bg.ArticleInfo = reader.IsDBNull(7)? null:reader.GetString(7);
+                bg.SeeSum = reader.GetInt64(8);
                 //bg.Data = reader.GetBlob(4,false);
                 return bg;
             }
@@ -188,6 +190,17 @@ namespace clf_blog.Model
                 }
                 if (ret.Count == 0) return null;
                 return ret.ToArray();
+            }
+        }
+        public void SeeOne(long id)
+        {
+            using (SqliteConnection connect = new SqliteConnection(source))
+            {
+                List<Blog> ret = new List<Blog>();
+                connect.Open();
+                var cmd = connect.CreateCommand();
+                cmd.CommandText = string.Format("select * from Blog order by SeeSum desc limit 0,{0}", count - 1);
+
             }
         }
 

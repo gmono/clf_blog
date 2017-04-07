@@ -1,0 +1,49 @@
+﻿@*
+    此页面为分页帮助页
+    需要给定已有Query字符串
+    此页会根据PageSum和NowPage两个ViewData产生页面
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Microsoft.AspNetCore.Http.IQueryCollection
+@{
+    long pagesum = ViewBag.PageSum;
+    long nowpage = ViewBag.NowPage;
+    long start = nowpage - 2>=1? nowpage:1;
+    long end = nowpage + 2 > pagesum ? pagesum : nowpage + 2;
+
+    long next = end + 3;
+    next = next > pagesum ? pagesum : next;
+    long back = start - 1;
+    back = back < 1 ? 1 : back;
+
+    string basequery = "";
+    foreach(var t in Model)
+    {
+        string key = t.Key;
+        if(key!="pageid")
+        {
+            basequery += $"&{key}={t.Value}";
+
+        }
+    }
+}
+
+<link rel="stylesheet" href="/css/pagesplit.css" />
+<div class="ps-top">
+    <a href="@("/Home/BlogList?"+basequery+$"&pageid={back-1}")" class="ps-back">
+        <
+    </a>
+    <div class="ps-pcont">
+        @for(long i=start;i<=end;++i)
+        {
+            <a class="@(i==nowpage? "ps-nowpage":"")" href="@("/Home/BlogList?"+basequery+$"&pageid={i-1}")">
+                @i
+            </a>
+        }
+    </div>
+    <a href="@("/Home/BlogList?"+basequery+$"&pageid={next-1}")" class="ps-next">
+        >
+    </a>
+
+</div>
+<div style="height:20px;width:100%"></div>

@@ -44,7 +44,7 @@ namespace clf_blog.Model
             {
                 connect.Open();
                 var cmd = connect.CreateCommand();
-                cmd.CommandText = string.Format("SELECT * FROM Blog ORDER BY Id ASC LIMIT 0,{0}",count);
+                cmd.CommandText = string.Format("SELECT * FROM Message ORDER BY Id ASC LIMIT 0,{0}",count);
                 var reader = cmd.ExecuteReader();
                 List<Message> ret = new List<Message>();
                 Message msg = null;
@@ -72,6 +72,19 @@ namespace clf_blog.Model
                 }
                 if (ret.Count == 0) return null;
                 return ret.ToArray();
+            }
+        }
+        public long GetMsgCount()
+        {
+            using (var connect = new SqliteConnection(source))
+            {
+                connect.Open();
+                var cmd = connect.CreateCommand();
+                cmd.CommandText = string.Format("SELECT count(*) FROM Message");
+                var reader = cmd.ExecuteReader();
+                reader.Read();
+                return reader.GetInt64(0);
+                
             }
         }
     }

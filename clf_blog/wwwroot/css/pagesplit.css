@@ -1,0 +1,94 @@
+.ps-top,
+.ps-pcont,
+.ps-back,
+.ps-next {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 50px;
+}
+
+.ps-top {
+    justify-content: flex-start;
+    background-color: rgba(241, 241, 241, 0.14);
+    outline: rgba(179, 179, 179, 0.27) 1px solid;
+    padding: 5px;
+    width: 80%;
+    margin-left:70px;
+    box-sizing: border-box;
+}
+@media screen and (max-width: 768px){
+    .ps-top{
+        width: 90%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+@media screen and (max-width: 512px){
+    .ps-top{
+        width: 95%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+.ps-pcont {
+    flex-grow: 0;
+    justify-content: space-around;
+    margin: 0 20px 0 20px;
+    flex-wrap: wrap;
+}
+
+@keyframes ps-shake {
+    0%
+    {
+        transform: rotate(0deg);
+    }
+    33.3%{
+        transform: rotate(15deg);
+    }
+    66.6%{
+        transform: rotate(-15deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+.ps-pcont>a {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 50px;
+    height: 50px;
+    margin-left: 20px;
+    animation: ps-shake 1.5s ease backwards infinite;
+    border: #97a2a2 1px dotted;
+}
+.ps-pcont>a:hover{
+    animation: none;
+}
+
+.ps-pcont>a:first-child {
+    margin-left: 0;
+}
+
+.ps-back,
+.ps-next {
+    flex-grow: 0;
+    min-width: 75px;
+    text-decoration: none;
+    color:black;
+    font-size: 2em;
+    font-weight: 300;
+}
+.ps-back{
+    border-right: dotted 1px black;
+}
+.ps-next{
+    border-left: dotted 1px black;
+    border-right: 1px #1d1d1d dotted;
+}
+
+.ps-nowpage{
+    border:1px rgba(0, 0, 0, 0.67) solid!important;
+}

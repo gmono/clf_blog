@@ -59,7 +59,7 @@ header>div>* {
 #mainnav {
     right: 0;
     top: 0;
-    width: 25em;
+    width: 15em;
     display: flex;
     position: absolute;
     box-shadow: none;

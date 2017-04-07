@@ -60,7 +60,7 @@ namespace clf_blog.Controllers
             long pagesum;
             BlogModel.Blog[] data=mod.GetBlogListOfRange(pagelen, pageid,out pagesum,types,stime,etime);
             ViewData["PageSum"] = pagesum;
-            ViewData["NowPage"]=1;
+            ViewData["NowPage"]=pageid+1; //1开头的页
             return View(data);
         }
         public IActionResult Types()

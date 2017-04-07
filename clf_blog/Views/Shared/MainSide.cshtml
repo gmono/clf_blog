@@ -4,6 +4,8 @@
     //此页面为部分页面 信息获取直接在页面内
     var bl = new clf_blog.Model.BlogModel();
     var asum = bl.GetSum();
+    var ml = new clf_blog.Model.MessageModel();
+    var ms = ml.GetMsgCount();
 }
     <link rel="stylesheet" href="/Sides/s-maininfo.css">
     <div id="s-maininfo">
@@ -18,11 +20,9 @@
                 文章数:@asum
             </div>
             <div>
-                累计通知:
+                累计通知:@ms
             </div>
-            <div>
-                累计评论:
-            </div>
+ 
         </div>
         <div id="s-text">
             <!--介绍信息的区域-->
