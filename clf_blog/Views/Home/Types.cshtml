@@ -1,6 +1,6 @@
 ﻿@* For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860 *@
  @{ ViewData["Title"]= "分类"; }
-
+@model clf_blog.Model.TypeModel.TypeInfo[]
 <link rel="stylesheet" href="/css/types.css">
 <div class="t-top">
     <!--   全屏滚动式-->
@@ -45,21 +45,17 @@
         <details style="margin-top:20px" class="t-classcont" open>
             <summary>类型</summary>
             <div class="t-wenzhang-cont">
-                <div>
-                    <div class="t-wenzhang">
-                        <div>Title</div>
-                        <div>info</div>
-                    </div>
-                    <div class="t-wenzhang"></div>
-                </div>
-                <div>
-                    <div class="t-wenzhang"></div>
-                    <div class="t-wenzhang"></div>
-                </div>
-                <div>
-                    <div class="t-wenzhang"></div>
-                    <div class="t-wenzhang"></div>
-                </div>
+                @foreach(var t in Model)
+                {
+                    <a href="/Home/BlogList?&type=@t.Id" style="text-decoration:none">
+                        <div class="t-wenzhang">
+                            <div>@t.Name</div>
+                            <div>@t.Info</div>
+                        </div>
+                    </a>
+
+
+                }
             </div>
         </details>
 
@@ -85,8 +81,5 @@
                 $(ele).show();
             });
         }
-    })
-    $(".t-wenzhang>div:last-child").click(function () {
-        alert("hello");
     })
 </script>
