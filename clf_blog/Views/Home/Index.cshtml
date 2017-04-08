@@ -48,7 +48,7 @@
                 {
                     if (hots[i].Content.Length > 100)
                     {
-                        hots[i].Content = hots[i].Content.Substring(0, 100);
+                        hots[i].Content = hots[i].Content.Substring(0, 100)+".........";
                     }
                     <div class="i-wenzhang">
                         <div>@hots[i].Title</div>
@@ -104,7 +104,7 @@
             }
             <hr>
             <div>
-                <a href="#">显示更多通知</a>
+                <a href="/Home/AllMsgs">显示更多通知</a>
             </div>
         </div>
     </div>

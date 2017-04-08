@@ -170,7 +170,14 @@ header>div>* {
 
 footer {
     height: 50px;
-    background-color: #cccccc;
+    background-color: rgba(205, 205, 205, 0.57);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    color:rgb(98, 98, 98);
+    font-weight:bold;
+    word-spacing:10px;
 }
 
 #maincontent {

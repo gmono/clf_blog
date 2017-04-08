@@ -62,7 +62,7 @@ namespace clf_blog.Model
             {
                 connect.Open();
                 var cmd = connect.CreateCommand();
-                cmd.CommandText = "SELECT * FROM Blog ORDER BY Id ASC";
+                cmd.CommandText = "SELECT * FROM Message ORDER BY Id ASC";
                 var reader = cmd.ExecuteReader();
                 List<Message> ret = new List<Message>();
                 Message msg = null;

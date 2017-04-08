@@ -112,8 +112,7 @@ namespace clf_blog.Model
                 {
                     nowcmd = string.Format("select * from ({0}) where Time>={1} and Time<={2} order by Time desc",nowcmd, stime.Value.Ticks, etime.Value.Ticks);
                 }
-                nowcmd = string.Format("select * from ({0}) order by Time desc limit {1},{2}", nowcmd, start, end);
-                cmd.CommandText = nowcmd;
+                cmd.CommandText = string.Format("select * from ({0}) order by Time desc limit {1},{2}", nowcmd, start, end);
                 var reader = cmd.ExecuteReader();
                 Blog bg = null;
                 while ((bg = ToBlog(reader)) != null)
@@ -122,7 +121,10 @@ namespace clf_blog.Model
                 }
                 if (ret.Count == 0) {pagesum=0;return null;}
                 //计算分页数
-                long sum = ret.Count;
+                cmd.CommandText = string.Format("select count(*) from ({0})", nowcmd);
+                reader = cmd.ExecuteReader();
+                reader.Read();
+                long sum = reader.GetInt64(0);
                 pagesum=sum/pagelen+(sum%pagelen!=0? 1:0);
                 return ret.ToArray();
             }

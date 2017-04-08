@@ -1,0 +1,66 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "所有通知";
+}
+@section Side
+{
+    @Html.Partial("MainSide")
+}
+@using clf_blog.Model
+@model MessageModel.Message[]
+<div class="am-msg">
+    <!--    通知区域-->
+    @foreach (var t in Model)
+            {
+        <details>
+            <summary>@t.Name</summary>
+            <h2>@t.Content</h2>
+        </details>
+    }
+    <hr>
+</div>
+<style>
+    .am-msg {
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+        .am-msg > details {
+            margin-top: 10px;
+        }
+
+            .am-msg > details > summary {
+                display: flex;
+                box-sizing: border-box;
+                width: auto;
+                align-items: center;
+                padding-left: 20px;
+                background-color: rgba(214, 214, 214, 0.9);
+                height: 50px;
+                cursor: pointer;
+            }
+
+        .am-msg > div {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+            .am-msg > div > a {
+                display: inline-flex;
+                color: #222222;
+                font-weight: bold;
+                font-size: small;
+                text-decoration: none;
+                height: 50px;
+                width: 8rem;
+                background-color: rgba(157, 133, 179, 0.56);
+                justify-content: center;
+                align-items: center;
+            }
+
+                .am-msg > div > a:active {
+                    background-color: rgba(130, 109, 148, 0.56);
+                }
+</style>

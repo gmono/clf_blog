@@ -81,5 +81,11 @@ namespace clf_blog.Controllers
             //bg.SeeOne(id);
             return View(data);
         }
+        public IActionResult AllMsgs()
+        {
+            var mg = new MessageModel();
+            var data = mg.GetAllMsgs();
+            return View(data);
+        }
     }
 }
